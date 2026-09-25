@@ -3,7 +3,7 @@
  Plugin Name: 		CMP - Coming Soon & Maintenance Plugin
  Plugin URI: 		https://wordpress.org/plugins/cmp-coming-soon-maintenance/
  Description:       Display customizable landing page for Coming Soon, Maintenance & Under Construction page.
- Version:           4.1.19
+ Version:           4.1.20
  Author:            NiteoThemes
  Author URI:        https://www.niteothemes.com
  Text Domain:       cmp-coming-soon-maintenance
@@ -72,7 +72,7 @@ if (!class_exists('CMP_Coming_Soon_and_Maintenance')) :
 		// define constants
 		private function constants()
 		{
-			$this->define('CMP_VERSION', '4.1.19');
+			$this->define('CMP_VERSION', '4.1.20');
 			$this->define('CMP_DEBUG', FALSE);
 			$this->define('CMP_AUTHOR', 'NiteoThemes');
 			$this->define('CMP_AUTHOR_HOMEPAGE', 'https://niteothemes.com');
@@ -2402,11 +2402,11 @@ if (!class_exists('CMP_Coming_Soon_and_Maintenance')) :
 				return false;
 			}
 
-			// Return early only for an exact, non-empty custom login path.
+			// A login alias must not override content WordPress resolved via query vars.
 			if (is_string($custom_login_url) && trim($custom_login_url) !== '') {
 				$custom_login_path = wp_parse_url($custom_login_url, PHP_URL_PATH);
 
-				if (is_string($custom_login_path) && trim($custom_login_path, '/') !== '' && $request_path === '/' . ltrim($custom_login_path, '/')) {
+				if (is_404() && is_string($custom_login_path) && trim($custom_login_path, '/') !== '' && $request_path === '/' . ltrim($custom_login_path, '/')) {
 					return false;
 				}
 			}
@@ -2416,7 +2416,7 @@ if (!class_exists('CMP_Coming_Soon_and_Maintenance')) :
 				$wps_login_path = get_option('whl_page', '');
 				$wps_login_path = is_string($wps_login_path) ? wp_parse_url($wps_login_path, PHP_URL_PATH) : '';
 
-				if (is_string($wps_login_path) && trim($wps_login_path, '/') !== '' && $request_path === '/' . ltrim($wps_login_path, '/')) {
+				if (is_404() && is_string($wps_login_path) && trim($wps_login_path, '/') !== '' && $request_path === '/' . ltrim($wps_login_path, '/')) {
 					return false;
 				}
 			}

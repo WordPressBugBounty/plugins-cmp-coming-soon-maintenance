@@ -5,7 +5,7 @@ Tags: coming soon, coming soon page, launch page, maintenance mode, under constr
 Requires at least: 3.0
 Requires PHP: 5.6
 Tested up to: 7.1
-Stable tag: 4.1.19
+Stable tag: 4.1.20
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -160,13 +160,17 @@ https://www.youtube.com/watch?v=uxuJfHzwdtE
 <p>Nothing is better than a good feedback! Please go to <a href="https://wordpress.org/support/plugin/cmp-coming-soon-maintenance/reviews/">Plugin reviews</a> and rate it! Alternatively you can click on a Donate button too!:)</p>
 
 == Changelog ==
+<h4>CMP 4.1.20</h4>
+<ul>
+	<li>Prevent custom login URL aliases from bypassing maintenance mode when WordPress resolves a content page.</li>
+</ul>
 <h4>CMP 4.1.19 - 07-September-26</h4>
 <ul>
-	<li>Completed the CVE-2026-13413 fix by resolving the actual WordPress login entry point and requiring exact, non-empty custom login paths.</li>
+	<li>Hardened the WordPress login entry point, but CVE-2026-13413 remains exploitable via custom login URLs. Versions 4.1.19 and below are affected.</li>
 </ul>
 <h4>CMP 4.1.18 - 22-August-26</h4>
 <ul>
-	<li>Fixed CVE-2026-13413, an unauthenticated maintenance-mode bypass. Reported by Meher Sudhakar Abbireddi.</li>
+	<li>Hardened login path matching for CVE-2026-13413, an unauthenticated maintenance-mode bypass; the fix was incomplete. Reported by Meher Sudhakar Abbireddi.</li>
 	<li>Fixed CVE-2026-13414, an unauthenticated maintenance-mode disable action. Reported by Revanth Hari Narayana Matte.</li>
 	<li>Fixed CVE-2026-13415, an Editor-level arbitrary option update in settings import. Reported by Revanth Hari Narayana Matte.</li>
 	<li>Fixed CVE-2026-13416, a stored cross-site scripting issue in social icon settings. Reported by Revanth Hari Narayana Matte.</li>
